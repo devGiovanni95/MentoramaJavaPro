@@ -1,7 +1,5 @@
 package br.com.mentorama.apiFilmes.controllers;
 
-import br.com.mentorama.apiFilmes.entities.Filmes;
-import br.com.mentorama.apiFilmes.services.IFilmesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

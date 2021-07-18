@@ -15,7 +15,8 @@ public class Product {
     }
 
     /*pegar preco com desconto*/
-    public Double getPriceWithDiscount(final Double discount){
+    public Double getPriceWithDiscount(final Double
+                                               discount){
         if (discount > maxDiscountPercentage){
             return price * (1 - maxDiscountPercentage);
         }else {
