@@ -1,5 +1,6 @@
 package br.com.sistemahospitalar.entities;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "paciente")
@@ -7,16 +8,21 @@ public class PacienteEntity {
 
     @Id
     @GeneratedValue
+    @ManyToMany(mappedBy = "id_paciente")
     private Long id;
 
-    @Column
+
+//    @JoinColumn(name = "nome")
     private String nome;
 
-    @Column
+//    @Column(name = "telefone")
     private String telefone;
 
-    @Column
+//    @Column(name = "data_aniversario")
     private String dataAniversario;
+
+//    @OneToOne(mappedBy = "idPaciente")
+//      private List<PacienteEntity> pacienteEntities;
 
     public PacienteEntity(Long id, String nome, String telefone, String dataAniversario) {
         this.id = id;

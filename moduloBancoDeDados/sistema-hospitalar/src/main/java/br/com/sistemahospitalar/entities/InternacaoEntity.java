@@ -1,42 +1,78 @@
 package br.com.sistemahospitalar.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class InternacaoEntity {
+//    @OneToOne
+//   private int idPaciente;
+
+//    @OneToOne
+//    private ProfissionalSaudeEntity medico;
+
 
     @Id
     @GeneratedValue
     private Long internacaoPaciente;
 
-    @Column
-    private int idPaciente;
+//    @ManyToMany
+//    @Column(name = "id_paciente")
+//    private int idPaciente;
 
-    @Column
+//    @Column(name = "nome_paciente ")
     private String nomePaciente;
 
-    @Column
+//    @Column(name = "data_hora_entrada ")
     private String dataHoraEntrada;
 
-    @Column
+//    @Column(name = "data_hora_saida ")
     private String dataHoraSaida;
 
-    @Column
+//    @Column(name = "diagnostico")
     private String diagnostico;
 
-    public InternacaoEntity(Long internacaoPaciente, int idPaciente,
+//    @ManyToMany
+//    @Column(name = "medico")
+//    private int medico;
+
+@ManyToMany
+@JoinColumn(name = "medico")
+    private List<ProfissionalSaudeEntity> medico = new ArrayList<>();
+
+    @ManyToMany
+    @JoinColumn(name = "id_paciente")
+    private List<PacienteEntity> id_paciente = new ArrayList<>();
+
+
+    public InternacaoEntity(Long internacaoPaciente, List<PacienteEntity> id_paciente,
                             String nomePaciente, String dataHoraEntrada,
-                            String dataHoraSaida, String diagnostico) {
+                            String dataHoraSaida, String diagnostico, List<ProfissionalSaudeEntity> medico) {
 
         this.internacaoPaciente = internacaoPaciente;
-        this.idPaciente = idPaciente;
+        this.id_paciente = id_paciente;
         this.nomePaciente = nomePaciente;
         this.dataHoraEntrada = dataHoraEntrada;
         this.dataHoraSaida = dataHoraSaida;
         this.diagnostico = diagnostico;
+        this.medico = medico;
+    }
+
+    public List<ProfissionalSaudeEntity> getMedico() {
+        return medico;
+    }
+
+    public void setMedico(List<ProfissionalSaudeEntity> medico) {
+        this.medico = medico;
+    }
+
+    public List<PacienteEntity> getId_paciente() {
+        return id_paciente;
+    }
+
+    public void setId_paciente(List<PacienteEntity> id_paciente) {
+        this.id_paciente = id_paciente;
     }
 
     public Long getInternacaoPaciente() {
@@ -45,14 +81,6 @@ public class InternacaoEntity {
 
     public void setInternacaoPaciente(Long internacaoPaciente) {
         this.internacaoPaciente = internacaoPaciente;
-    }
-
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
     }
 
     public String getNomePaciente() {
@@ -86,4 +114,6 @@ public class InternacaoEntity {
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
+
+
 }

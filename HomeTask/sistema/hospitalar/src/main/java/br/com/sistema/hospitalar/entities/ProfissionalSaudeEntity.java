@@ -1,38 +1,35 @@
-package br.com.sistemahospitalar.entities;
+package br.com.sistema.hospitalar.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class ProfissionalSaudeEntity {
 
     @Id
-    @GeneratedValue
-//    @OneToMany
-    @ManyToMany(mappedBy = "medico")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(name = "matricula")
-    private  int matricula;
+    private int matricula;
 
-//    @Column(name = "nome")
     private String nome;
 
-//    @Column(name = "departamento")
     private String departamento;
 
-//    @Column(name = "cargo")
     private String cargo;
 
-//    @Column(name = "telefone")
     private String telefoneProfissional;
 
-//    @OneToOne(mappedBy = "medico")
-//    private List<ProfissionalSaudeEntity> profissionalSaudeEntities;
+    @OneToMany(mappedBy = "profissional_saude")
+    private List<InternacaoEntity> internacao2 = new ArrayList<>();
 
-    public ProfissionalSaudeEntity(Long id, int matricula, String nome,
-                                   String departamento, String cargo,
-                                   String telefoneProfissional) {
+    private ProfissionalSaudeEntity(){
+
+    }
+
+    public ProfissionalSaudeEntity(Long id, int matricula, String nome, String departamento, String cargo, String telefoneProfissional) {
         this.id = id;
         this.matricula = matricula;
         this.nome = nome;
@@ -40,14 +37,6 @@ public class ProfissionalSaudeEntity {
         this.cargo = cargo;
         this.telefoneProfissional = telefoneProfissional;
     }
-
-//    public List<ProfissionalSaudeEntity> getProfissionalSaudeEntities() {
-//        return profissionalSaudeEntities;
-//    }
-//
-//    public void setProfissionalSaudeEntities(List<ProfissionalSaudeEntity> profissionalSaudeEntities) {
-//        this.profissionalSaudeEntities = profissionalSaudeEntities;
-//    }
 
     public Long getId() {
         return id;
@@ -95,5 +84,26 @@ public class ProfissionalSaudeEntity {
 
     public void setTelefoneProfissional(String telefoneProfissional) {
         this.telefoneProfissional = telefoneProfissional;
+    }
+
+    public List<InternacaoEntity> getInternacao2() {
+        return internacao2;
+    }
+
+    public void setInternacao2(List<InternacaoEntity> internacao2) {
+        this.internacao2 = internacao2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ProfissionalSaudeEntity)) return false;
+        ProfissionalSaudeEntity that = (ProfissionalSaudeEntity) o;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

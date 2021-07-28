@@ -1,16 +1,32 @@
-//package br.com.sistemahospitalar.controller;
+package br.com.sistema.hospitalar.controller;
+
+import br.com.sistema.hospitalar.entities.PacienteEntity;
+import br.com.sistema.hospitalar.repositories.PacienteRepository;
+import br.com.sistema.hospitalar.service.PacienteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+@RequestMapping(value = "/pacientes")
+public class PacienteController {
+
+
+    @Autowired
+    private PacienteService pacienteService;
+
+    @GetMapping
+    @RequestMapping(value = "/{id}")
+    public ResponseEntity<?> listar(@PathVariable Long id) {
+        PacienteEntity obj = pacienteService.busca(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
 //
-//import br.com.sistemahospitalar.entities.PacienteEntity;
-//import br.com.sistemahospitalar.repositories.PacienteRepository;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//
-//@Controller
-//@RequestMapping("/pacientes")
-//public class PacienteController {
-//
+//    @Autowired
 //    private final PacienteRepository pacienteRepository;
 //
 //
@@ -42,6 +58,6 @@
 //    public void delete(@PathVariable("id") final Long id){
 //        this.pacienteRepository.deleteById(id);
 //    }
-//
-//
-//}
+
+
+}
