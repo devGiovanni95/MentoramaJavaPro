@@ -1,6 +1,6 @@
 package br.com.mentorama.javapersistenceapiJPA.controllers;
 
-import br.com.mentorama.javapersistenceapiJPA.ProductEntity;
+import br.com.mentorama.javapersistenceapiJPA.entity.ProductEntity;
 import br.com.mentorama.javapersistenceapiJPA.repositories.ProductRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +10,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
+//    @Autowired
     private final ProductRepository productRepository;
 
     public ProductController(ProductRepository productRepository) {

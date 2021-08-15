@@ -9,20 +9,63 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/pacientes")
+@RequestMapping("/pacientes")
 public class PacienteController {
 
 
     @Autowired
     private PacienteService pacienteService;
 
+    @Autowired
+    private PacienteRepository pacienteRepository;
+
+    /*Funcionando*/
     @GetMapping
     @RequestMapping(value = "/{id}")
     public ResponseEntity<?> listar(@PathVariable Long id) {
         PacienteEntity obj = pacienteService.busca(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping
+    @RequestMapping
+    public List<PacienteEntity> findAll() {
+        return  this.pacienteService.findAll();
+//        return ResponseEntity.ok().body(obj);
+    }
+
+
+
+//
+//    @GetMapping
+//    @RequestMapping
+//    public ResponseEntity<?> FindAll() {
+//        List<PacienteEntity> obj = pacienteService.findAll();
+//        return ResponseEntity.ok().body(obj);
+//    }
+
+//    @GetMapping("{id}")
+//    @RequestMapping
+//    public List<PacienteEntity> findById(@PathVariable("id") final Long id) {
+//      return this.pacienteRepository.findById(id);
+//    }
+//
+//    @GetMapping
+//    @RequestMapping
+//    public List<PacienteEntity> findAll() {
+//        return this.pacienteRepository.findAll().
+//                stream().map(PacienteEntity).collect(Collectors.toList());
+////                List<PacienteEntity> obj = pacienteRepository.findAll();
+//
+//    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") final Long id) {
+        this.pacienteRepository.deleteById(id);
     }
 
 //

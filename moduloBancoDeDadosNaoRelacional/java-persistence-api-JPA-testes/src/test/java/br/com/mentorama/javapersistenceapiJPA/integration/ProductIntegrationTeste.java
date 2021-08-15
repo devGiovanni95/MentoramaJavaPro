@@ -1,7 +1,7 @@
 package br.com.mentorama.javapersistenceapiJPA.integration;
 
-import br.com.mentorama.javapersistenceapiJPA.ProductEntity;
-import br.com.mentorama.javapersistenceapiJPA.controllers.ProductController;
+import br.com.mentorama.javapersistenceapiJPA.entity.ProductEntity;
+import br.com.mentorama.javapersistenceapiJPA.entity.controllers.ProductController;
 import br.com.mentorama.javapersistenceapiJPA.repositories.ProductRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
