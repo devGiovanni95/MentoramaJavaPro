@@ -1,6 +1,8 @@
 package br.com.sistema.hospitalar.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,28 +18,14 @@ public class InternacaoEntity {
 
     @ManyToOne
     @JoinColumn(name = "medico_id")
-    private Long profissional_saude;
+    private ProfissionalSaudeEntity profissional_saude;
 
     @ManyToOne
     @JoinColumn(name = "paciente_id")
-    private Long paciente;
+    private ProfissionalSaudeEntity paciente;
 
     public InternacaoEntity(){
 
-    }
-
-    public InternacaoEntity(Long internacaoPaciente, String nomePaciente,
-                            String dataHoraEntrada, String dataHoraSaida,
-                            String diagnostico, Long profissional_saude,
-                            Long paciente) {
-
-        this.internacaoPaciente = internacaoPaciente;
-        this.nomePaciente = nomePaciente;
-        this.dataHoraEntrada = dataHoraEntrada;
-        this.dataHoraSaida = dataHoraSaida;
-        this.diagnostico = diagnostico;
-        this.profissional_saude = profissional_saude;
-        this.paciente = paciente;
     }
 
     public InternacaoEntity(Long internacaoPaciente, String nomePaciente,

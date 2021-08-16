@@ -33,7 +33,7 @@ values
 (2,'Marcelo','21/04/21 14:30','21/04/21 16:14','Dores no peito, começo de infarte ',2),
 (3,'Miguel','23/04/21 14:50','23/04/21 15:15','alergia atacada',7),
 (4,'Elaine','27/04/21 15:30','27/04/21 16:20','Braço com luxação',5),
-(6,'Rian','14/05/21 15:40','14/04/21 17:10','Colica renal',1),
-(7,'Claudione','16/05/21 18:40','16/04/21 20:59','Enxaqueca',7),
-(3,'Rodrigo','28/05/21 12:30','28/04/21 16:43','Curativo corte pos faca',6),
-(3,'Miguel','01/06/21 04:30','01/04/21 04:50','Fratura no pé', 4);
+(6,'Rian','14/05/21 15:40','14/05/21 17:10','Colica renal',1),
+(7,'Claudione','16/05/21 18:40','16/05/21 20:59','Enxaqueca',7),
+(3,'Rodrigo','28/05/21 12:30','28/05/21 16:43','Curativo corte pos faca',6),
+(3,'Miguel','01/06/21 04:30','01/06/21 04:50','Fratura no pé', 4);

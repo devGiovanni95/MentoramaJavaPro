@@ -2,7 +2,8 @@ package br.com.sistema.hospitalar.controller;
 
 import br.com.sistema.hospitalar.dto.ProfissionalSaudeDTO;
 import br.com.sistema.hospitalar.entities.ProfissionalSaudeEntity;
-import br.com.sistema.hospitalar.service.ProfissionalSaudeService;
+import br.com.sistema.hospitalar.repositories.ProfissionalSaudeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/profissionalSaude")
+@RequestMapping(value = "/profissionalSaude")
 public class ProfissionalSaudeController {
 
 //    private final ProfissionalSaudeRepository profissionalSaudeRepository;
@@ -19,23 +20,29 @@ public class ProfissionalSaudeController {
 //    public ProfissionalSaudeController(ProfissionalSaudeRepository profissionalSaudeRepository) {
 //        this.profissionalSaudeRepository = profissionalSaudeRepository;
 //    }
-
-    private ProfissionalSaudeService profissionalSaudeService;
-
-    @GetMapping
-    @RequestMapping
-    public ResponseEntity<List<ProfissionalSaudeDTO>> findAll(){
-        List<ProfissionalSaudeEntity> lista = profissionalSaudeService.findAll();
-        List<ProfissionalSaudeDTO> listaDTO = lista.stream().map(obj -> new ProfissionalSaudeDTO()).collect(Collectors.toList());
-        return ResponseEntity.ok().body(listaDTO);
-    }
+@Autowired
+    private ProfissionalSaudeRepository profissionalSaudeRepository;
 //
 //    @GetMapping
-//    @RequestMapping
-//    public ResponseEntity<List<ProfissionalSaudeEntity>> findAll(){
-//        List<ProfissionalSaudeEntity> lista = profissionalSaudeService.findAll();
-//        return ResponseEntity.ok().body(lista);
+//    public ResponseEntity<List<ProfissionalSaudeDTO>> findAll(){
+//        List<ProfissionalSaudeEntity> lista = profissionalSaudeRepository.findAll();
+//        List<ProfissionalSaudeDTO> listaDTO = lista.stream().map(obj -> new ProfissionalSaudeDTO()).collect(Collectors.toList());
+//        return ResponseEntity.ok().body(listaDTO);
 //    }
+
+//    @GetMapping
+//    @RequestMapping
+//    public ResponseEntity<List<ProfissionalSaudeDTO>> findAll(){
+//        List<ProfissionalSaudeEntity> lista = profissionalSaudeRepository.findAll();
+//        List<ProfissionalSaudeDTO> listaDTO = lista.stream().map(obj -> new ProfissionalSaudeDTO()).collect(Collectors.toList());
+//        return ResponseEntity.ok().body(listaDTO);
+//    }
+
+    @GetMapping
+    public ResponseEntity<List<ProfissionalSaudeEntity>> findAll(){
+        List<ProfissionalSaudeEntity> lista = profissionalSaudeRepository.findAll();
+        return ResponseEntity.ok().body(lista);
+    }
 
 //    @GetMapping("/{id}")
 //    public ProfissionalSaudeEntity findyById(@PathVariable("id") final  Long id){

@@ -1,7 +1,7 @@
 package br.com.sistema.hospitalar.controller;
 
 import br.com.sistema.hospitalar.entities.PacienteEntity;
-import br.com.sistema.hospitalar.service.PacienteService;
+import br.com.sistema.hospitalar.repositories.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,11 +15,11 @@ public class PacienteController {
 
 
     @Autowired
-    private PacienteService pacienteService;
+    private PacienteRepository pacienteRepository;
 
     @GetMapping
     public ResponseEntity<List<PacienteEntity>> findAll() {
-       List<PacienteEntity> lista = pacienteService.findAll();
+       List<PacienteEntity> lista = pacienteRepository.findAll();
         return ResponseEntity.ok().body(lista);
     }
 //
