@@ -19,22 +19,27 @@ public class ProfissionalSaudeController {
     @Autowired
     private ProfissionalSaudeRepository profissionalSaudeRepository;
 
-//    @GetMapping
-//    public ResponseEntity<List<ProfissionalSaudeEntity>> findAll() {
-//        List<ProfissionalSaudeEntity> lista = profissionalSaudeRepository.findAll();
-//        return ResponseEntity.ok().body(lista);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ProfissionalSaudeEntity findyById(@PathVariable("id") final Long id) {
-//        return this.profissionalSaudeRepository.findById(id).orElse(null);
-//    }
+    @GetMapping
+    public ResponseEntity<List<ProfissionalSaudeEntity>> findAll() {
+        List<ProfissionalSaudeEntity> lista = profissionalSaudeRepository.findAll();
+        return ResponseEntity.ok().body(lista);
+    }
 
-    @GetMapping("/{contagem}")
-    public ProfissionalSaudeEntity findByNumberMedicByDepartament(@PathVariable("contagem") String departamento) {
+    @GetMapping("/{id}")
+    public ProfissionalSaudeEntity findyById(@PathVariable("id") final Long id) {
+        return this.profissionalSaudeRepository.findById(id).orElse(null);
+    }
+
+    @GetMapping("/contagem")
+    public ProfissionalSaudeEntity findByNumberMedicByDepartament( ProfissionalSaudeEntity departamento) {
         return findByNumberMedicByDepartament(departamento);
 
     }
+//    @GetMapping("/{contagem}")
+//    public ProfissionalSaudeEntity findByNumberMedicByDepartament(@PathVariable("contagem") ProfissionalSaudeEntity departamento) {
+//        return findByNumberMedicByDepartament(departamento);
+//
+//    }
 //
 //    @GetMapping("/{quantidadePorDepartamento}")
 //    public Object findByNumberMedicByDepartament(@PathVariable("quantidadePorDepartamento") final  String departament){
