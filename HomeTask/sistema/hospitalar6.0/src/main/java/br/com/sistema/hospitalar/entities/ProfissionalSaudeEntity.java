@@ -12,7 +12,7 @@ public class ProfissionalSaudeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int matricula;
+    private Integer matricula;
 
     private String nome;
 
@@ -29,7 +29,7 @@ public class ProfissionalSaudeEntity {
 
     }
 
-    public ProfissionalSaudeEntity(Long id, int matricula, String nome, String departamento, String cargo, String telefoneProfissional) {
+    public ProfissionalSaudeEntity(Long id, Integer matricula, String nome, String departamento, String cargo, String telefoneProfissional) {
         this.id = id;
         this.matricula = matricula;
         this.nome = nome;
@@ -46,11 +46,11 @@ public class ProfissionalSaudeEntity {
         this.id = id;
     }
 
-    public int getMatricula() {
+    public Integer getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
 

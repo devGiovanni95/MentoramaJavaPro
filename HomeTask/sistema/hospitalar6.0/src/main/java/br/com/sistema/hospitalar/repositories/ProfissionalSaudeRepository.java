@@ -19,11 +19,11 @@ public interface ProfissionalSaudeRepository extends JpaRepository<ProfissionalS
 //    order by quantidade_por_departamento desc;
     /*Contagem do numero de medicos por departamento*/
 
-    @Query(value = "select departamento, count(departamento) " +
-            "as quantidade_por_departamento from profissional_saude_entity" +
-            " group by departamento order by quantidade_por_departamento desc", nativeQuery = true)
+//    @Query(value = "select departamento, count(departamento) " +
+//            "as quantidade_por_departamento from profissional_saude_entity" +
+//            " group by departamento order by quantidade_por_departamento desc", nativeQuery = true)
 //    Optional<Object> findByNumberMedicByDepartament(String departament);
-    ResponseEntity<ProfissionalSaudeEntity> findByNumberMedicByDepartament(ProfissionalSaudeEntity departament);
+//    ResponseEntity<ProfissionalSaudeEntity> findByNumberMedicByDepartament(ProfissionalSaudeEntity departament);
 
 
 // @Query(value = "select d FROM departamento d, count(departamento) " +
@@ -34,5 +34,13 @@ public interface ProfissionalSaudeRepository extends JpaRepository<ProfissionalS
 
 
 //    List<ProfissionalSaudeEntity> findByNumberMedicByDepartament(String departament, List<ProfissionalSaudeEntity>profissionalSaudeEntities);
+
+    @Query(value = "select departamento, count(departamento) " +
+            "as quantidade_por_departamento from profissional_saude_entity" +
+            " group by departamento order by quantidade_por_departamento desc", nativeQuery = true)
+//    Optional<Object> findByNumberMedicByDepartament(String departament);
+    ResponseEntity<ProfissionalSaudeEntity> findByNumberMedicByDepartament( );
+
+
 
 }

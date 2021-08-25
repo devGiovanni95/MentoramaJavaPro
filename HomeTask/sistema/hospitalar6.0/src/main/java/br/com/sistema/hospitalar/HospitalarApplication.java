@@ -34,13 +34,13 @@ public class HospitalarApplication implements CommandLineRunner {
 
 
 
-        ProfissionalSaudeEntity ps1 = new ProfissionalSaudeEntity(null, 1000, "Marcos", "Pediatria", "Pediatria", "19999-9999");
-        ProfissionalSaudeEntity ps2 = new ProfissionalSaudeEntity(null, 1024, "Gloria", "Cardiopneumologia", "Geral", "175099-888");
-        ProfissionalSaudeEntity ps3 = new ProfissionalSaudeEntity(null, 1547, "Frederico", "Médico", "Geral", "193599-7777");
-        ProfissionalSaudeEntity ps4 = new ProfissionalSaudeEntity(null, 1258, "Sandra", "Ortopedia e Traumatologia", "Geral", "199899-6666");
-        ProfissionalSaudeEntity ps5 = new ProfissionalSaudeEntity(null, 1245, "Marcio", "Ortopedia e Traumatologia", "Ortopedista", "199479-2222");
-        ProfissionalSaudeEntity ps6 = new ProfissionalSaudeEntity(null, 7895, "Ana", "Cirurgia", "Geral", "19899-1111");
-        ProfissionalSaudeEntity ps7 = new ProfissionalSaudeEntity(null, 1025, "Richard", "Dermatologia", "Ambulatório Geral e Didático, Alergia", "199589-0000");
+        ProfissionalSaudeEntity ps1 = new ProfissionalSaudeEntity(1L, 1000, "Marcos", "Pediatria", "Pediatria", "19999-9999");
+        ProfissionalSaudeEntity ps2 = new ProfissionalSaudeEntity(2L, 1024, "Gloria", "Cardiopneumologia", "Geral", "175099-888");
+        ProfissionalSaudeEntity ps3 = new ProfissionalSaudeEntity(3l, 1547, "Frederico", "Médico", "Geral", "193599-7777");
+        ProfissionalSaudeEntity ps4 = new ProfissionalSaudeEntity(4l, 1258, "Sandra", "Ortopedia e Traumatologia", "Geral", "199899-6666");
+        ProfissionalSaudeEntity ps5 = new ProfissionalSaudeEntity(5l, 1245, "Marcio", "Ortopedia e Traumatologia", "Ortopedista", "199479-2222");
+        ProfissionalSaudeEntity ps6 = new ProfissionalSaudeEntity(6l, 7895, "Ana", "Cirurgia", "Geral", "19899-1111");
+        ProfissionalSaudeEntity ps7 = new ProfissionalSaudeEntity(7l, 1025, "Richard", "Dermatologia", "Ambulatório Geral e Didático, Alergia", "199589-0000");
 
         	profissionalSaudeRepository.saveAll(Arrays.asList(ps1, ps2, ps4, ps5, ps6, ps7));
 

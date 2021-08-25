@@ -30,9 +30,23 @@ public class ProfissionalSaudeController {
         return this.profissionalSaudeRepository.findById(id).orElse(null);
     }
 
+//    @GetMapping("/contagem")
+//    public ProfissionalSaudeEntity findByNumberMedicByDepartament( ProfissionalSaudeEntity departamento) {
+//        return findByNumberMedicByDepartament(departamento);
+//
+//    }
+//    @GetMapping("/contagem")
+//    public HttpEntity<ProfissionalSaudeEntity> findByNumberMedicByDepartament(ProfissionalSaudeEntity profissional ) {
+//        ResponseEntity<ProfissionalSaudeEntity> list = profissionalSaudeRepository.findByNumberMedicByDepartament();
+//        return list;
+//
+//    }
+
     @GetMapping("/contagem")
-    public ProfissionalSaudeEntity findByNumberMedicByDepartament( ProfissionalSaudeEntity departamento) {
-        return findByNumberMedicByDepartament(departamento);
+    public ResponseEntity<ResponseEntity<ProfissionalSaudeEntity>> findByNumberMedicByDepartament(ProfissionalSaudeEntity profissional ) {
+        ResponseEntity<ProfissionalSaudeEntity> list = profissionalSaudeRepository.findByNumberMedicByDepartament();
+        return ResponseEntity.ok().body(list);
+
 
     }
 //    @GetMapping("/{contagem}")
