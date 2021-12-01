@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
+    @RolesAllowed("user")
     @GetMapping
     public ResponseEntity<List<PacienteDTO>> findAll() {
        List<PacienteEntity> lista = pacienteService.findAll();
@@ -31,6 +33,7 @@ public class PacienteController {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @RolesAllowed("user")
     @GetMapping(path = "/{id}")
     public ResponseEntity<PacienteDTO> findyById(@PathVariable("id") Long id){
         PacienteEntity paciente = pacienteService.findById(id);
@@ -39,7 +42,7 @@ public class PacienteController {
     }
 
 
-
+    @RolesAllowed("admin")
     @PostMapping
     public ResponseEntity<PacienteEntity> insert(@RequestBody PacienteDTO pacienteDTO){
         PacienteEntity paciente = pacienteService.fromDto(pacienteDTO);
@@ -50,7 +53,7 @@ public class PacienteController {
     }
 
 
-
+    @RolesAllowed("admin")
     @PutMapping
     @RequestMapping(value = "/{id}")
     public ResponseEntity<Void> update(@RequestBody PacienteDTO pacienteDTO, @PathVariable Long id){
@@ -61,7 +64,7 @@ public class PacienteController {
     }
 //
 
-
+    @RolesAllowed("admin")
     @DeleteMapping("/{id}")
     public ResponseEntity<PacienteEntity> delete(@PathVariable("id") final Long id){
         pacienteService.delete(id);

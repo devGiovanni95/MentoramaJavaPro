@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,12 +32,14 @@ public class ProfissionalSaudeController {
 //
 //    }
 
+    @RolesAllowed("user")
     @GetMapping("/contagem")
     public ResponseEntity<List<ProfissionalSaudeEntity>> findByNumberMedicByDepartament() {
         List<ProfissionalSaudeEntity> lista = profisssionalSaudeService.findByNumberMedicByDepartament();
         return ResponseEntity.ok().body(lista);
     }
 
+    @RolesAllowed("user")
     @GetMapping
     public ResponseEntity<List<ProfissionalSaudeDTO>> findAll() {
         List<ProfissionalSaudeEntity> lista = profisssionalSaudeService.findAll();
@@ -44,6 +47,7 @@ public class ProfissionalSaudeController {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @RolesAllowed("user")
     @GetMapping(path = "/{id}")
     public ResponseEntity<ProfissionalSaudeDTO> findyById(@PathVariable("id") Long id){
         ProfissionalSaudeEntity profissionalSaude = profisssionalSaudeService.findById(id);
@@ -53,6 +57,7 @@ public class ProfissionalSaudeController {
 
 
 
+    @RolesAllowed("admin")
     @PostMapping
     public ResponseEntity<ProfissionalSaudeEntity> insert(@RequestBody ProfissionalSaudeDTO profissionalSaudeDTO){
         ProfissionalSaudeEntity profissionalSaude = profisssionalSaudeService.fromDto(profissionalSaudeDTO);
@@ -64,6 +69,7 @@ public class ProfissionalSaudeController {
 
 
 
+    @RolesAllowed("admin")
     @PutMapping
     @RequestMapping(value = "/{id}")
     public ResponseEntity<Void> update(@RequestBody ProfissionalSaudeDTO profissionalSaudeDTO, @PathVariable Long id){
@@ -75,6 +81,7 @@ public class ProfissionalSaudeController {
 
 
 
+    @RolesAllowed("admin")
     @DeleteMapping("/{id}")
     public ResponseEntity<ProfissionalSaudeEntity> delete(@PathVariable("id") final Long id){
         profisssionalSaudeService.delete(id);

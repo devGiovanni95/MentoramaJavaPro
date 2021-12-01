@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import java.net.URI;
 import java.util.List;
 
@@ -23,18 +24,21 @@ public class InternacaoController {
     @Autowired
     private InternacaoService internacaoService;
 
+    @RolesAllowed("user")
     @GetMapping
     public ResponseEntity<List<InternacaoEntity>> findAll() {
         List<InternacaoEntity> lista = internacaoService.findAll();
         return ResponseEntity.ok().body(lista);
     }
 
+    @RolesAllowed("user")
     @GetMapping("/contagem")
     public ResponseEntity<List<InternacaoEntity>> findByNumberMedicByDepartament() {
         List<InternacaoEntity> lista = internacaoService.findByNumberMedicByDepartament();
         return ResponseEntity.ok().body(lista);
     }
 
+    @RolesAllowed("user")
     @GetMapping(path = "/{id}")
     public ResponseEntity<InternacaoEntity> findyById(@PathVariable("id") Long id){
         InternacaoEntity paciente = internacaoService.findById(id);
@@ -42,7 +46,7 @@ public class InternacaoController {
     }
 
 
-
+    @RolesAllowed("admin")
     @PostMapping
     public ResponseEntity<InternacaoEntity> insert(@RequestBody InternacaoDTO internacaoDTO){
         InternacaoEntity internacao = internacaoService.fromDto(internacaoDTO);
@@ -53,7 +57,7 @@ public class InternacaoController {
     }
 
 
-
+    @RolesAllowed("admin")
     @PutMapping
     @RequestMapping(value = "/{id}")
     public ResponseEntity<Void> update(@RequestBody InternacaoDTO internacaoDTO, @PathVariable Long id){
@@ -64,7 +68,7 @@ public class InternacaoController {
     }
 //
 
-
+    @RolesAllowed("admin")
     @DeleteMapping("/{id}")
     public ResponseEntity<PacienteEntity> delete(@PathVariable("id") final Long id){
         internacaoService.delete(id);
