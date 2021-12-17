@@ -3,7 +3,8 @@ package br.com.mentorama.webfluxtest.controllers;
 import br.com.mentorama.webfluxtest.controllers.vos.NewPointEntryVO;
 import br.com.mentorama.webfluxtest.model.PointEntry;
 import br.com.mentorama.webfluxtest.services.PointEntryService;
-import org.springframework.boot.jms.*;
+import org.springframework.jms.core.*;
+
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
