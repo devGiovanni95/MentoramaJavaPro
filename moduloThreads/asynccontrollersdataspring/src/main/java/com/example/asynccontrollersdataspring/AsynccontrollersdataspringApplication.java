@@ -11,7 +11,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 
 @SpringBootApplication
-@ComponentScan({"com.example.asynccontrollersdataspring.repositories"})
+@ComponentScan({"com.example.asynccontrollersdataspring.repositories.UserRepository",
+				"com.example.asynccontrollersdataspring.controllers.UserController",
+				"com.example.asynccontrollersdataspring.services.UserService",
+				"com.example.asynccontrollersdataspring.configuration",
+				"com.example.asynccontrollersdataspring.exceptions",
+				"com.example.asynccontrollersdataspring.models.User"})
 @EnableAsync
 public class AsynccontrollersdataspringApplication {
 
