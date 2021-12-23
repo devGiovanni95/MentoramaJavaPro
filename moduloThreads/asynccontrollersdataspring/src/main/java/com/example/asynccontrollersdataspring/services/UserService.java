@@ -2,6 +2,7 @@ package com.example.asynccontrollersdataspring.services;
 
 import com.example.asynccontrollersdataspring.models.User;
 import com.example.asynccontrollersdataspring.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class UserService {
 
+    @Autowired//estava faltando essa anotação
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository){
