@@ -49,28 +49,10 @@ public class FilmesController {
         return this.filmesService.save(filmes);
     }
 
-//    @PostMapping
-//    public ResponseEntity<Filmes> add(@RequestBody final Filmes filmes) {
-//          if (filmesList.contains(filmes.getId())){
-//              return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//          } else {  filmesService.add(filmes);
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }}
-
-//    @PutMapping
-//    public ResponseEntity updateNome(@RequestBody final Filmes nome) {
-//        filmesService.updateName(nome);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
-//
-//
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity delete(@PathVariable("id") Integer id) {
-//        filmesService.delete(id);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//
-//    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        filmesService.delete(id);
+         }
 
 
     //conferir documentação

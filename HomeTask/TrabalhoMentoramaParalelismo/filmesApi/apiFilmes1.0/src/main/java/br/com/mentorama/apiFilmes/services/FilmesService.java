@@ -18,13 +18,6 @@ public class FilmesService{
     public FilmesService(FilmesRepository filmesRepository){
         this.filmesRepository = filmesRepository;
     }
-//
-//    public List<Filmes> findAll(Filmes filmes){
-//        if (filmes != null){
-//            return filmesRepository.findAll(filmes);
-//        }
-//        return filmesRepository.findAll();
-//    }
 
     public CompletableFuture<List<Filmes>> findAll(){
         System.out.println("ServiceThread: " + Thread.currentThread().getName());
@@ -41,25 +34,8 @@ public class FilmesService{
         return CompletableFuture.completedFuture(filmesRepository.save(filmes));
     }
 
-//    public void updateName(final Filmes nome){
-//        filmesRepository.updateNome(nome);
-//    }
-//
-//    public void updateDiretor(final Filmes diretor){
-//        filmesRepository.updateDiretor(diretor);
-//    }
-//
-//    public void updateAno(final Filmes ano){
-//        filmesRepository.updateAno(ano);
-//    }
-//
-//    public void updateNota(final Filmes nota){
-//        filmesRepository.updateNota(nota);
-//    }
-//
-//
-//    public void delete(Integer id) {
-//        filmesRepository.delete(id);
-//    }
+        public void delete(Integer id) {
+        filmesRepository.deleteById(id);
+    }
 
 }

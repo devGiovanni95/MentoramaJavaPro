@@ -18,4 +18,6 @@ public interface FilmesRepository extends JpaRepository<Filmes, Integer> {
 
     CompletableFuture<List<Filmes>> findAllBy();
 
+    void deleteById(final Integer id);
+
 }
