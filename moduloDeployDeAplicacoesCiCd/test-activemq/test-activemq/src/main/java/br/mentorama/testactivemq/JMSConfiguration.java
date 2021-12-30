@@ -7,7 +7,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
-import org.springframework.messaging.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 
 import javax.jms.ConnectionFactory;
 
@@ -29,7 +29,7 @@ public class JMSConfiguration {
 
     //topicos
     @Bean
-    public JmsListenerContainerFactory<?> topicsListenerFactory(ConnectionFactory connectionFactory,
+    public JmsListenerContainerFactory<?> topicListenerFactory(ConnectionFactory connectionFactory,
                                                                 DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setPubSubDomain(true);
@@ -44,7 +44,7 @@ public class JMSConfiguration {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(MessageType.TEXT);
         converter.setTypeIdPropertyName("_type");
-        return (MessageConverter) converter;
+        return converter;
 
     }
 
