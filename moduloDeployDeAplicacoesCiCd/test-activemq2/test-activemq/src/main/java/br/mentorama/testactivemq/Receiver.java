@@ -19,7 +19,7 @@ public class Receiver {
 
     //Receiver message of Topic
     @JmsListener(destination = "topic.mailbox", containerFactory = "topicListenerFactory")
-    public void receivedMessageFromTopic(Email email){
+    public void receiveMessagedFromTopic(Email email){
         System.out.println("Received email from topic<" + email +">");
     }
 }

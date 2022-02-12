@@ -40,6 +40,7 @@ public class JMSConfiguration {
         return factory;
     }
 
+
     @Bean//Serialize message content toMessageConverter json using TextMessage
     public MessageConverter jacksonJmsMessageConverter(){
       MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
