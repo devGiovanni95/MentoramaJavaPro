@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PublishController {
+public class PublishControllerFilm {
 
     @Autowired
     private JmsTemplate jmsTemplate;
 
     @PostMapping("/publishFilm")
-    public ResponseEntity<String> publishFilm(
+    public ResponseEntity<Film> publishFilm(
             @RequestBody Film film) {
         try {
             jmsTemplate.convertAndSend("AvaliacaoFilmes",film);
-            return new ResponseEntity<>("Sent", HttpStatus.OK);
+            return new ResponseEntity<Film>(HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Film>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

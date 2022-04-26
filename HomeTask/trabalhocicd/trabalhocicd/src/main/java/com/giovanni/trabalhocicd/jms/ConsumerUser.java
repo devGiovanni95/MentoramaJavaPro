@@ -1,25 +1,32 @@
 package com.giovanni.trabalhocicd.jms;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import com.giovanni.trabalhocicd.model.Film;
+import com.giovanni.trabalhocicd.model.User;
+import com.giovanni.trabalhocicd.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
+import reactor.core.publisher.Mono;
 
 @Component
-public class Consumer {
+public class ConsumerUser {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Consumer.class);
+    private UserService userService;
 
-    private List<Film> film = new ArrayList<>();
+    public void PublishControllerUser(UserService userService){
+        this.userService = userService;
+    }
 
-    @JmsListener(destination = "AvaliacaoFilmes")
-    public void messageListener(Film film ){
-        LOGGER.info("Cadastro Recebido. {}",film);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerUser.class);
 
+//    private List<Film> film = new ArrayList<>();
+
+    @JmsListener(destination = "User")
+    public Mono<User> messageListener(@RequestBody User user ){
+        LOGGER.info("Cadastro Recebido. {}",user);
+        return this.userService.save(user);
     }
 
 //    @JmsListener( destination = "${activemq.name}" )
